@@ -1,3 +1,10 @@
+"""
+KISS: `from alru_cache import alru_cache`
+
+Copyright (c) 2025, Leavers.
+License: MIT
+"""
+
 import weakref
 from functools import _CacheInfo, _make_key, partial, partialmethod, update_wrapper
 from threading import RLock
@@ -39,7 +46,8 @@ def alru_cache(
             def _weak_self(self_ref, *args, **kwargs):
                 return func(self_ref(), *args, **kwargs)
 
-            _weak_wrapper = _lru_cache_wrapper(_weak_self, maxsize, typed, _CacheInfo)
+            _weak_wrapper = _lru_cache_wrapper(
+                _weak_self, maxsize, typed, _CacheInfo)
 
             def wrapper(self, *args, **kwargs):
                 return _weak_wrapper(weakref.ref(self), *args, **kwargs)
