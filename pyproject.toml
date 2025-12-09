@@ -1,0 +1,54 @@
+[project]
+name = "alru_cache"
+description = "Just async lru_cache."
+authors = [
+    {name = "Leavers", email = "leavers930@gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+classifiers = [
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Software Development",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: Utilities",
+]
+dynamic = ["version"]
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm.build]
+includes = ["alru_cache.py"]
+excludes = ["tests"]
+
+[tool.pdm.version]
+source = "file"
+path = "alru_cache.py"
+
+[tool.pdm]
+distribution = true
+
+[tool.ruff]
+line-length = 88
+
+
+[dependency-groups]
+dev = [
+    "nox>=2025.11.12",
+    "ruff>=0.14.8",
+    "ty>=0.0.1a32",
+    "pytest>=9.0.2",
+    "pytest-asyncio>=1.3.0",
+]
